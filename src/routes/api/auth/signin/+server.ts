@@ -36,13 +36,11 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 
     const accessToken = createToken({ id: user.id });
 
-    console.log(accessToken);
-
     cookies.set('access_token', accessToken, {
       maxAge: 60 * 60 * 24 * 7,
       httpOnly: true,
       sameSite: 'none',
-      secure: true,
+      secure: false,
       path: '/',
     });
 

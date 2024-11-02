@@ -17,6 +17,8 @@ export const verifyToken = (token: string) => {
 export const handleSession: Handle = async ({ event, resolve }) => {
   const token = event.cookies.get('access_token')
 
+  console.log('token', token)
+
   if (!token) {
     return await resolve(event)
   }
