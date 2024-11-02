@@ -80,18 +80,29 @@ model AreaCandidate {
 model User {
   id String @id @default(cuid())
 
+  nationalId String @unique
+
   firstname String
   lastname  String
-  email     String @unique
-  password  String
+  image     String?
 
-  areaId String
-  area   Area   @relation(fields: [areaId], references: [id])
+  area   Area?   @relation(fields: [areaId], references: [id])
+  areaId String?
 
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  isAdmin   Boolean   @default(false)
+  isVoted Boolean   @default(false)
+  votedAt DateTime?
+  isAdmin Boolean   @default(false)
 
-  isVoted   Boolean   @default(false)
-  votedAt   DateTime?
+  password String
+
+  @@map("users")
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
 }

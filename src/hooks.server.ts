@@ -1,4 +1,4 @@
-import { initUserHooks } from '$lib/server/hooks';
+import { handleSession } from '$lib/jwt';
 import { sequence } from '@sveltejs/kit/hooks';
 
-export const handle = sequence(initUserHooks);
+export const handle = sequence(handleSession);

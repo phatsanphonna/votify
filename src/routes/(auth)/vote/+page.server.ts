@@ -2,9 +2,11 @@ import { prisma } from '$lib/server/database';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ locals }) => {
+	const user = locals.user
+
 	const data = await prisma.user.findUnique({
 		where: {
-			id: locals.user!.id
+			id: user?.id
 		},
 		include: {
 			area: {
@@ -15,9 +17,11 @@ export const load: PageServerLoad = async ({ locals }) => {
 		}
 	});
 
+	console.log(data);
+
 	return {
-		candidates: data!.area.candidates,
-    area: data!.area,
-    user: data!
-	};
+		user: data!,
+		area: data!.area!,
+		candidates: data!.area!.candidates!
+	}
 };
