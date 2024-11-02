@@ -3,6 +3,7 @@
 	import { LoaderIcon } from 'lucide-svelte';
 	import { Button, buttonVariants } from '../ui/button';
 	import type { HTMLButtonAttributes } from 'svelte/elements';
+	import type { Snippet } from 'svelte';
 
 	interface Properties extends HTMLButtonAttributes {
 		class?: string;
@@ -11,6 +12,7 @@
 	}
 
 	let {
+    children,
 		class: className,
 		disabled,
 		isLoading,
@@ -33,7 +35,7 @@
 		{#if isLoading}
 			<LoaderIcon />
 		{:else}
-			<slot />
+			{@render (children as Snippet<[]>)()}
 		{/if}
 	</div>
 </Button>
