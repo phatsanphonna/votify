@@ -1,4 +1,6 @@
 <script lang="ts">
+	import CandidateCard from "./CandidateCard.svelte";
+
 	let {
 		firstname,
 		lastname,
@@ -17,7 +19,7 @@
 	{#if isVoted}
 		<p class="text-sm">
 			คุณได้ใช้สิทธิ์การเลือกตั้งแล้ว
-			<span class="text-[#0F996D] font-bold">เมื่อ {votedAt}</span>
+			<span class="text-[#0F996D] font-bold">เมื่อ {votedAt?.toLocaleString()}</span>
 		</p>
 	{:else}
 		<p class="text-sm">
@@ -27,3 +29,4 @@
 	{/if}
 	<p class="text-xs">กรุณาใช้สิทธิ์ภายในวันเวลาที่กำหนด เพื่อรักษาผลประโยชน์ของตน</p>
 </div>
+

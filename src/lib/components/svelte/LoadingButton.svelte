@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
-	import { LoaderIcon } from 'lucide-svelte';
+	import { LoaderCircleIcon } from 'lucide-svelte';
 	import { Button, buttonVariants } from '../ui/button';
 	import type { HTMLButtonAttributes } from 'svelte/elements';
 	import type { Snippet } from 'svelte';
@@ -11,13 +11,7 @@
 		isLoading?: boolean;
 	}
 
-	let {
-    children,
-		class: className,
-		disabled,
-		isLoading,
-		...others
-	}: Properties = $props();
+	let { children, class: className, disabled, isLoading, ...others }: Properties = $props();
 </script>
 
 <Button
@@ -33,7 +27,7 @@
 >
 	<div class="flex items-center justify-center text-accent">
 		{#if isLoading}
-			<LoaderIcon />
+			<LoaderCircleIcon class="mr-2 h-4 w-4 animate-spin" />
 		{:else}
 			{@render (children as Snippet<[]>)()}
 		{/if}

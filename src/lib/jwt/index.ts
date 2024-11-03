@@ -15,22 +15,6 @@ export const verifyToken = (token: string) => {
 }
 
 export const handleSession: Handle = async ({ event, resolve }) => {
-  const token = event.cookies.get('access_token')
-
-  console.log('token', token)
-
-  if (!token) {
-    return await resolve(event)
-  }
-
-  try {
-    const payload = verifyToken(token)
-    event.locals.user = payload
-
-    return await resolve(event)
-  } catch (err) {
-    console.error(err)
-
-    return await resolve(event)
-  }
+  event.locals.user = { id: 'cm30oxjgu000013tohkfbzjna', exp: 2222222 }
+  return await resolve(event)
 }

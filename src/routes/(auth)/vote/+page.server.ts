@@ -1,4 +1,5 @@
 import { prisma } from '$lib/server/database';
+import { getObjectSignedUrl } from '$lib/server/s3';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ locals }) => {
@@ -11,16 +12,31 @@ export const load: PageServerLoad = async ({ locals }) => {
 		include: {
 			area: {
 				include: {
-					candidates: true
+					candidates: {
+						include: {
+							partyMember: {
+								include: {
+									party: true
+								}
+							},
+						}
+					}
 				}
 			}
 		}
 	});
-	
 
+
+	const candidates = await Promise.all(data!.area!.candidates.map(async (candidate) => ({
+		...candidate,
+		partyMember: {
+			...candidate.partyMember,
+			profileImage: await getObjectSignedUrl(candidate.partyMember.profileImage)
+		}
+	})))
 	return {
 		user: data!,
 		area: data!.area!,
-		candidates: data!.area!.candidates!
+		candidates,
 	}
 };

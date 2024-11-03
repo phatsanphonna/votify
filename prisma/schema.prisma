@@ -72,6 +72,7 @@ model AreaCandidate {
   partyMemberId String
 
   number Int
+  score  Int @default(0)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
