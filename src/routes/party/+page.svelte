@@ -5,6 +5,10 @@
 	let { data }: { data: PageData } = $props();
 </script>
 
+<svelte:head>
+	<title>พรรคการเมืองทั้งหมด</title>
+</svelte:head>
+
 <div class="p-8 flex flex-col gap-4">
 	<h1 class="text-2xl">รายชื่อพรรคทั้งหมด</h1>
 

@@ -3,7 +3,9 @@ import { error } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 import { getObjectSignedUrl } from "$lib/server/s3";
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ params, parent }) => {
+  const { party } = await parent();
+
   const data = await prisma.partyMember.findMany({
     where: {
       partyId: params.id
@@ -21,5 +23,6 @@ export const load: PageServerLoad = async ({ params }) => {
 
   return {
     members: parseData,
+    party: party
   };
 };

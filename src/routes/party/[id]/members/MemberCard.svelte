@@ -4,8 +4,8 @@
 	let { member, index }: { member: PartyMember; index: number } = $props();
 </script>
 
-<div class="border-b flex justify-between p-2">
-	<div class="">
+<div class="border-b flex justify-between items-center p-2">
+	<div>
 		<p class="text-sm text-primary">สมาชิกลำดับที่ {index}</p>
 		<p class="text-lg">{member.name}</p>
 	</div>

@@ -6,6 +6,10 @@
 	let { data }: { data: PageData } = $props();
 </script>
 
+<svelte:head>
+	<title>คูหาออนไลน์</title>
+</svelte:head>
+
 <div class="p-8 flex flex-col gap-4">
 	<h1 class="text-center text-4xl font-bold text-primary">คูหาออนไลน์</h1>
 

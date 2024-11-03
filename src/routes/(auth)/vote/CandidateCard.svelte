@@ -77,7 +77,10 @@
 			<span>พรรค{partyName}</span>
 		</div>
 		<img src={image} width="250" height="250" alt={`${name}`} class="rounded-lg" />
-		<span class="text-red-500">กรุณาตรวจสอบข้อมูลก่อนยืนยัน</span>
+
+		{#if !isVoted}
+			<span class="text-red-500">กรุณาตรวจสอบข้อมูลก่อนยืนยัน</span>
+		{/if}
 
 		{#if isVoted}
 			<DialogFooter class="flex flex-row justify-between w-full gap-2">
