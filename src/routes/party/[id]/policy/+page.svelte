@@ -4,4 +4,4 @@
 	let { data }: { data: PageServerData } = $props();
 </script>
 
-<p>{data.party.background}</p>
+<p>{data.party.policy}</p>

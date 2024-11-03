@@ -13,6 +13,9 @@ export const load: PageServerLoad = async ({ locals }) => {
 			area: {
 				include: {
 					candidates: {
+						orderBy: {
+							number: 'asc',
+						},
 						include: {
 							partyMember: {
 								include: {
