@@ -1,0 +1,1 @@
+import"../chunks/disclose-version.Bg9kRutz.js";import{$ as o}from"../chunks/runtime.aUzNjL39.js";import{h as t}from"../chunks/svelte-head.BhKDNomO.js";function p(r){t(a=>{o.title="สถิติ"})}export{p as component};
