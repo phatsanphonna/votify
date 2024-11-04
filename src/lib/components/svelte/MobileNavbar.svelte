@@ -1,6 +1,6 @@
 <script>
 	import { ChartBarBigIcon, HomeIcon, ListIcon, UserIcon, VoteIcon } from 'lucide-svelte';
-	import { buttonVariants } from '../ui/button';
+	import { Button, buttonVariants } from '../ui/button';
 	import { page } from '$app/stores';
 </script>
 
@@ -20,16 +20,9 @@
 				</a>
 			</li>
 			<li>
-				<a
-					href="/statistics"
-					class={buttonVariants({
-						variant: $page.url.pathname.startsWith('/statistics') ? 'default' : 'link',
-						size: 'icon',
-						class: 'rounded-full'
-					})}
-				>
+				<Button class="rounded-full" size="icon" disabled>
 					<ChartBarBigIcon />
-				</a>
+				</Button>
 			</li>
 			<li>
 				<a
